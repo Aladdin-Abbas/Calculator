@@ -1,5 +1,4 @@
 (function () {
-  console.log("hello");
   let previousVal = 0;
   let secondVal = 0;
   let operatorVal = "";
@@ -90,9 +89,7 @@
     }
 
     if (equalsClicked && !value) {
-      console.log(
-        operate(parseFloat(previousVal), parseFloat(secondVal), operatorVal)
-      );
+
       previousVal = operate(
         parseFloat(previousVal),
         parseFloat(secondVal),
@@ -127,8 +124,7 @@
   };
 
   const numberBtnsHandler = displayVal => {
-    console.log("number");
-    console.log(displayVal);
+
     if (previousVal == "Not possible") calculatorReset();
 
     lastInputVal = displayVal;
@@ -136,8 +132,6 @@
   };
 
   const operationBtnsHandler = opVal => {
-    console.log("operator");
-    console.log(opVal);
 
     if (!previousVal && !secondVal) return;
 
@@ -195,7 +189,6 @@
   clearBtn.addEventListener("click", calculatorReset);
 
   document.addEventListener("keydown", e => {
-    console.log(e.key);
     if (
       ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."].some(
         el => el == e.key
