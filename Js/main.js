@@ -167,24 +167,16 @@
   };
 
   numberBtns.forEach(numberBtn =>
-    numberBtn.addEventListener("click", e => {
-      numberBtnsHandler(e.target.textContent);
-    })
+    numberBtn.addEventListener("click", e =>  numberBtnsHandler(e.target.textContent))
   );
 
   operationBtns.forEach(operator => {
-    operator.addEventListener("click", e => {
-      operationBtnsHandler(e.target.textContent);
-    });
+    operator.addEventListener("click", e => operationBtnsHandler(e.target.textContent));
   });
 
-  deleteBtn.addEventListener("click", () => {
-    deleteBtnHandler();
-  });
+  deleteBtn.addEventListener("click", deleteBtnHandler);
 
-  equalsBtn.addEventListener("click", () => {
-    equalsBtnHandler();
-  });
+  equalsBtn.addEventListener("click",  equalsBtnHandler);
 
   clearBtn.addEventListener("click", calculatorReset);
 
