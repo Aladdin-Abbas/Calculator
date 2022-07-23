@@ -5,6 +5,8 @@
   let operatorChaining = false;
   let equalsClicked = false;
   let lastInputVal = "";
+  let firstTime = true;
+
 
   const screenText = document.querySelector(".operand");
   const numberBtns = document.querySelectorAll(".number");
@@ -31,6 +33,7 @@
 
   const multiply = (firstNum, secondNum) => {
     let result = firstNum * secondNum;
+    result = parseFloat(result.toFixed(4))
     if (result.length > 22) {
       return Math.round(result);
     }
@@ -38,8 +41,9 @@
   };
 
   const divide = (firstNum, secondNum) => {
-    if (secondNum == 0) return "Not possible";
+    if (secondNum == 0) return "Infinity";
     let result = firstNum / secondNum;
+    result = parseFloat(result.toFixed(4))
     if (result.length > 22) {
       return Math.round(result);
     }
@@ -54,6 +58,7 @@
     equalsClicked = false;
     screenText.textContent = "";
     lastInputVal = "";
+    firstTime = true;
   };
 
   const operate = (firstNum, secondNum, operator) => {
@@ -116,6 +121,12 @@
       return;
     }
 
+    if ( !firstTime && parseFloat(value) === 0 && parseFloat(previousVal) === 0) {
+      
+      return;
+    }
+    firstTime = false
+
     if (previousVal) {
       value = previousVal.toString() + value.toString();
     }
@@ -125,7 +136,7 @@
 
   const numberBtnsHandler = displayVal => {
 
-    if (previousVal == "Not possible") calculatorReset();
+    if (previousVal == "Infinity") calculatorReset();
 
     lastInputVal = displayVal;
     display(displayVal);
